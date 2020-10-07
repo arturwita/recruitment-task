@@ -1,4 +1,4 @@
-###Task description:
+### Task description:
 Create an authentication service (credentials: login & password).
 
 After being authenticated download data from public API 
