@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -27,5 +27,20 @@ export class UserService {
         const user = { login: userDto.login, password };
 
         return await this.userRepository.save(user)
+    }
+
+    async login(userDto: UserDto): Promise<any> {
+        const user = await this.userRepository.findOne({login: userDto.login});
+        if (!user) throw new UnauthorizedException();
+
+        const passwordsMatch = await this.crypto.comparePasswords(userDto.password, user.password);
+        if (!passwordsMatch) throw new UnauthorizedException();
+
+        const { password, ...payload } = user;
+        const token = await this.crypto.generateToken(payload);
+
+        return {
+            token
+        }
     }
 }
