@@ -9,7 +9,7 @@ const configService: ConfigService = new ConfigService();
 @Module({
     imports: [
         ConfigModule.forRoot({
-            envFilePath: '.env.example'
+            envFilePath: '.env'
         }),
         TypeOrmModule.forRoot({
             type: 'mongodb',
