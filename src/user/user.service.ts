@@ -15,10 +15,6 @@ export class UserService {
         private readonly crypto: Crypto,
     ) {}
 
-    async findAll(): Promise<User[]> {
-        return this.userRepository.find();
-    }
-
     async register(userDto: UserDto): Promise<User> {
         const userExists = await this.userRepository.findOne({login: userDto.login});
         if (userExists) throw new BadRequestException();
@@ -29,7 +25,7 @@ export class UserService {
         return await this.userRepository.save(user)
     }
 
-    async login(userDto: UserDto): Promise<any> {
+    async login(userDto: UserDto): Promise<string> {
         const user = await this.userRepository.findOne({login: userDto.login});
         if (!user) throw new UnauthorizedException();
 
@@ -37,10 +33,7 @@ export class UserService {
         if (!passwordsMatch) throw new UnauthorizedException();
 
         const { password, ...payload } = user;
-        const token = await this.crypto.generateToken(payload);
 
-        return {
-            token
-        }
+        return await this.crypto.generateToken(payload);
     }
 }

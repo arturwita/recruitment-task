@@ -7,11 +7,6 @@ import { UserDto } from './dto/user-dto';
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
-    @Get()
-    findAll(): Promise<User[]> {
-        return this.userService.findAll();
-    }
-
     @Post('/register')
     register(@Body() userDto: UserDto): Promise<User> {
         return this.userService.register(userDto);
@@ -19,7 +14,7 @@ export class UserController {
 
     @HttpCode(200)
     @Post('login')
-    async login(@Body() userDto: UserDto): Promise<any> {
+    async login(@Body() userDto: UserDto): Promise<string> {
         return this.userService.login(userDto);
     }
 }
