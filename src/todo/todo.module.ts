@@ -6,7 +6,7 @@ import { TodoController } from './todo.controller';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.entity';
 import { AuthorizationMiddleware } from '../common/middlewares/auth';
-import { ExternalClient } from '../common/utils/ExternalClient';
+import { ExternalClient } from '../common/utils/external-client';
 
 const configService: ConfigService = new ConfigService();
 
@@ -34,7 +34,7 @@ const configService: ConfigService = new ConfigService();
     exports: [TodoService]
 })
 export class TodoModule implements NestModule {
-    configure(consumer: MiddlewareConsumer) {
+    configure(consumer: MiddlewareConsumer): any {
         consumer
             .apply(AuthorizationMiddleware)
             .forRoutes(TodoController);

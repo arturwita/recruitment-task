@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Todo } from './todo.entity';
 import { parseTodo } from '../common/constants/functions';
-import { ExternalClient } from '../common/utils/ExternalClient';
+import { ExternalClient } from '../common/utils/external-client';
 import { OPERATION_SUCCESS } from '../common/constants/responses';
 
 @Injectable()
