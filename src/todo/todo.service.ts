@@ -2,8 +2,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Todo } from './todo.entity';
-import { parseTodo } from '../common/constants/functions';
-import { ExternalClient } from '../common/utils/external-client';
+import { parseTodo } from './utils/todo-parser';
+import { HttpClient } from '../common/utils/http-client';
 import { OPERATION_SUCCESS } from '../common/constants/responses';
 
 @Injectable()
@@ -12,8 +12,8 @@ export class TodoService {
         @InjectRepository(Todo)
         private readonly todoRepository: Repository<Todo>,
 
-        @Inject(ExternalClient)
-        private readonly externalClient: ExternalClient
+        @Inject(HttpClient)
+        private readonly httpClient: HttpClient
     ) {}
 
     async getTodos(): Promise<Todo[]> {
@@ -22,12 +22,12 @@ export class TodoService {
 
     async downloadTodos(): Promise<any> {
         const URL = 'https://jsonplaceholder.typicode.com/todos';
-        const arr = await this.externalClient.downloadData(URL);
+        const unparsedTodos = await this.httpClient.downloadData(URL);
 
-        arr
+        await unparsedTodos
             .map(parseTodo)
-            .forEach((item) => {
-                this.todoRepository.save(item);
+            .forEach((todo) => {
+                this.todoRepository.save(todo);
             });
 
         return OPERATION_SUCCESS;

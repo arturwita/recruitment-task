@@ -5,8 +5,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { TodoController } from './todo.controller';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.entity';
-import { AuthorizationMiddleware } from '../common/middlewares/auth';
-import { ExternalClient } from '../common/utils/external-client';
+import { AuthorizationMiddleware } from '../common/middlewares/auth-middleware';
+import { HttpClient } from '../common/utils/http-client';
 
 const configService: ConfigService = new ConfigService();
 
@@ -28,7 +28,7 @@ const configService: ConfigService = new ConfigService();
     ],
     providers: [
         TodoService,
-        ExternalClient
+        HttpClient
     ],
     controllers: [TodoController],
     exports: [TodoService]
