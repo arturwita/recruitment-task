@@ -4,17 +4,17 @@ import { ApiProperty } from "@nestjs/swagger";
 export class TodoDto {
     @ApiProperty()
     @IsInt()
-    readonly userId: number;
+    userId: number;
 
     @ApiProperty()
     @IsInt()
-    readonly todoId: number;
+    todoId: number;
 
     @ApiProperty()
     @IsString()
-    readonly title: string;
+    title: string;
 
     @ApiProperty()
     @IsBoolean()
-    readonly completed: boolean;
+    completed: boolean;
 }

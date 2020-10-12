@@ -6,6 +6,7 @@ import { TodoController } from './todo.controller';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.entity';
 import { AuthorizationMiddleware } from '../common/middlewares/auth';
+import { ExternalClient } from '../common/utils/ExternalClient';
 
 const configService: ConfigService = new ConfigService();
 
@@ -25,7 +26,10 @@ const configService: ConfigService = new ConfigService();
             },
         })
     ],
-    providers: [TodoService],
+    providers: [
+        TodoService,
+        ExternalClient
+    ],
     controllers: [TodoController],
     exports: [TodoService]
 })
