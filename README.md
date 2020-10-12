@@ -13,3 +13,9 @@ Use the following technologies:
 - Swagger
 - MongoDB
 - Docker (optional)
+
+### Usage:
+
+1. run `npm install`.
+2. create a `.env` file in the project root directory containing properties from the `.env.example` file.
+3. run `npm run start:prod`
