@@ -12,7 +12,7 @@ async function bootstrap() {
 
     const options = new DocumentBuilder()
         .setTitle('recruitment-task')
-        .setDescription('An auth API with an external API connection.')
+        .setDescription('Auth API with an external API connection.')
         .setVersion('1.0')
         .build();
     const document = SwaggerModule.createDocument(app, options);

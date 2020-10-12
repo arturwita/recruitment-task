@@ -6,9 +6,6 @@ export class Todo {
     id: ObjectID;
 
     @Column()
-    userId: number;
-
-    @Column()
     todoId: number;
 
     @Column()

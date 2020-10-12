@@ -16,12 +16,14 @@ const configService: ConfigService = new ConfigService();
         TypeOrmModule.forRoot({
             type: 'mongodb',
             host: configService.get<string>('DB_HOST'),
+            username: configService.get<string>('DB_USER'),
+            password: configService.get<string>('DB_PASSWORD'),
             database: configService.get<string>('DB_NAME'),
+            synchronize: configService.get<boolean>('DB_SYNCHRONIZATION_FLAG'),
             entities: [
                 User,
                 Todo
-            ],
-            synchronize: true,
+            ]
         }),
         UserModule,
         TodoModule,
