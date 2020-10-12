@@ -13,7 +13,7 @@ export class TodoController {
     }
 
     @Get('download')
-    async downloadTodos(): Promise<any> {
+    async downloadTodos(@Headers(AUTH_HEADER) token: string): Promise<any> {
         return this.todoService.downloadTodos();
     }
 }
