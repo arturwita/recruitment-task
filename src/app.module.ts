@@ -23,7 +23,9 @@ const configService: ConfigService = new ConfigService();
             entities: [
                 User,
                 Todo
-            ]
+            ],
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         }),
         UserModule,
         TodoModule,

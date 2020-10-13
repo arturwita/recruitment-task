@@ -5,6 +5,7 @@ import { Todo } from './todo.entity';
 import { parseTodo } from './utils/todo-parser';
 import { HttpClient } from '../common/utils/http-client';
 import { OPERATION_SUCCESS } from '../common/constants/responses';
+import { validate } from './utils/todo-validator';
 
 @Injectable()
 export class TodoService {
@@ -24,9 +25,11 @@ export class TodoService {
         const URL = 'https://jsonplaceholder.typicode.com/todos';
         const unparsedTodos = await this.httpClient.downloadData(URL);
 
-        await unparsedTodos
+        const validTodos = validate(unparsedTodos);
+
+        await validTodos
             .map(parseTodo)
-            .forEach((todo) => {
+            .forEach(todo => {
                 this.todoRepository.save(todo);
             });
 
