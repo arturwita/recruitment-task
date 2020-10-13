@@ -19,12 +19,12 @@ Use the following technologies:
 - #### backend
   1. Open terminal in the project's root directory and run `npm install`.
   2. Create a `.env` file in the project root directory containing properties from the `.env.example` file.
-  3. Run `npm start`
+  3. Run `npm start`.
   
 - #### frontend *
-  1. Go to the `front` directory and 
+  1. Go to the `front` directory. 
   2. Run `npm install`.
-  3. Run `npm run serve`
+  3. Run `npm run serve`.
 
 ## :warning: Warning!
 
