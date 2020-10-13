@@ -5,10 +5,13 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const configService: ConfigService = new ConfigService();
+
+    const app = await NestFactory.create(AppModule, {
+        cors: configService.get<boolean>('ENABLE_CORS')
+    });
     app.useGlobalPipes(new ValidationPipe({transform: true}));
 
-    const configService: ConfigService = new ConfigService();
 
     const options = new DocumentBuilder()
         .setTitle('recruitment-task')
