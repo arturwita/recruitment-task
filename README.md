@@ -1,4 +1,4 @@
-### Task description:
+### :green_book: Task description:
 Create an authentication service (credentials: login & password).
 
 After being authenticated download data from public API 
@@ -14,8 +14,19 @@ Use the following technologies:
 - MongoDB
 - Docker (optional)
 
-### Usage:
+### :gear: Usage:
 
-1. run `npm install`.
-2. create a `.env` file in the project root directory containing properties from the `.env.example` file.
-3. run `npm run start:prod`
+- #### backend
+  1. Open terminal in the project's root directory and run `npm install`.
+  2. Create a `.env` file in the project root directory containing properties from the `.env.example` file.
+  3. Run `npm start`
+  
+- #### frontend *
+  1. Go to the `front` directory and 
+  2. Run `npm install`.
+  3. Run `npm run serve`
+
+## :warning: Warning!
+
+Current frontend implementation leaves much to be desired, as it can be broken easily. The API itself is more resilient.
+Thus, I suggest using Postman to test it. You can import Postman collection [here](https://www.getpostman.com/collections/5136830063c318c4a093).
