@@ -26,12 +26,11 @@ export class TodoService {
         const unparsedTodos = await this.httpClient.downloadData(URL);
 
         const validTodos = validate(unparsedTodos);
+        await validTodos.map(parseTodo);
 
-        await validTodos
-            .map(parseTodo)
-            .forEach(todo => {
-                this.todoRepository.save(todo);
-            });
+        for (const todo of validTodos) {
+            await this.todoRepository.save(todo);
+        }
 
         return OPERATION_SUCCESS;
     }
