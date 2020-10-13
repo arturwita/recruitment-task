@@ -9,10 +9,9 @@ export class AuthorizationMiddleware implements NestMiddleware {
         private jwtService: JwtService) {}
 
     async use(req: Request, res: Response, next: () => void): Promise<any> {
-        const { authorization: value } = req.headers;
-        const [, token] = value.split('Bearer: ');
-
         try {
+            const { authorization: value } = req.headers;
+            const [, token] = value.split('Bearer: ');
             await this.jwtService.verify(token);
         }
         catch (e) {
