@@ -12,7 +12,6 @@ Use the following technologies:
 - TypeORM
 - Swagger
 - MongoDB
-- Docker (optional)
 
 ### :gear: Usage:
 
