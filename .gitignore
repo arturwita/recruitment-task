@@ -35,3 +35,9 @@ lerna-debug.log*
 
 # .envs
 .env
+
+# terraform
+/terraform/.terraform/
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+/terraform/config/config.tfvars
