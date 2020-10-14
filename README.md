@@ -26,7 +26,6 @@ Use the following technologies:
   2. Run `npm install`.
   3. Run `npm run serve`.
 
-## :warning: Warning!
+## :phone: Resources:
 
-Current frontend implementation leaves much to be desired, as it can be broken easily. The API itself is more resilient.
-Thus, I suggest using Postman to test it. You can import Postman collection [here](https://www.getpostman.com/collections/5136830063c318c4a093).
+- [Postman collection](https://www.getpostman.com/collections/5136830063c318c4a093).
