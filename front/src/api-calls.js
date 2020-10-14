@@ -29,7 +29,7 @@ export const register = credentials => new Promise ((resolve, reject) => {
 });
 
 export const downloadTodos = () => new Promise ((resolve, reject) => {
-  axios({url: 'http://localhost:8000/todos/download', method: 'GET' })
+  axios({url: 'http://localhost:8000/todos/download', method: 'POST' })
     .then(() => {
       resolve('Downloaded successfully')
     })

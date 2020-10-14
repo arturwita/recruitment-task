@@ -1,4 +1,4 @@
-import { Controller, Get, Headers } from '@nestjs/common';
+import { Controller, Get, Headers, Post } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.entity';
 import { AUTH_HEADER } from '../common/constants/headers';
@@ -12,7 +12,7 @@ export class TodoController {
         return this.todoService.getTodos();
     }
 
-    @Get('download')
+    @Post('download')
     async downloadTodos(@Headers(AUTH_HEADER) token: string): Promise<any> {
         return this.todoService.downloadTodos();
     }
